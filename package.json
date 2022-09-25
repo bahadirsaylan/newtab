@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.10.6"
+    "clsx": "^1.2.1",
+    "preact": "^10.10.6",
+    "preact-feather": "^4.2.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.3.0",
