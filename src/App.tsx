@@ -1,4 +1,6 @@
 import SearchBar from "./components/SearchBar"
+import TileList from "./components/TileList"
+import Tile from "./components/Tile"
 
 export default function App() {
   const handleSearch = (searchQuery: string) => {
@@ -22,6 +24,14 @@ export default function App() {
           handleSubmit={handleSearch}
           autoFocus
         />
+
+        <TileList className="mx-auto">
+          <a href="http://github.com">
+            <Tile>
+              <img src="https://github.com/favicon.ico" />
+            </Tile>
+          </a>
+        </TileList>
       </div>
     </main>
   )
