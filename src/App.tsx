@@ -1,6 +1,7 @@
 import SearchBar from "./components/SearchBar"
 import TileList from "./components/TileList"
 import Tile from "./components/Tile"
+import DateTime from "./components/DateTime"
 
 export default function App() {
   const handleSearch = (searchQuery: string) => {
@@ -18,7 +19,7 @@ export default function App() {
       }}
     >
       <div class="p-8 space-y-6">
-        <h1 class="text-4xl font-bold text-white w-fit mx-auto">Hello</h1>
+        <DateTime className="mx-auto" />
         <SearchBar
           class="mx-auto max-w-lg"
           handleSubmit={handleSearch}
