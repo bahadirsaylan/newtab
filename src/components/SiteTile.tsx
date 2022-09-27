@@ -1,4 +1,5 @@
 import clsx from "clsx"
+import { getFavicon } from "../utils/url"
 
 interface IProps {
   className?: string
@@ -16,9 +17,7 @@ function SiteTile({ className, name, url }: IProps) {
           className
         )}
       >
-        <img
-          src={`https://icons.duckduckgo.com/ip3/${new URL(url).hostname}.ico`}
-        />
+        <img src={getFavicon(url)} alt={url} />
       </div>
       <p class="text-xs text-center mt-1">{name}</p>
     </a>
