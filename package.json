@@ -11,7 +11,8 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "preact": "^10.10.6",
-    "preact-feather": "^4.2.1"
+    "preact-feather": "^4.2.1",
+    "teaful": "^0.11.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.3.0",

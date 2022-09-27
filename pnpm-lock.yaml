@@ -8,6 +8,7 @@ specifiers:
   preact: ^10.10.6
   preact-feather: ^4.2.1
   tailwindcss: ^3.1.8
+  teaful: ^0.11.1
   typescript: ^4.6.4
   vite: ^3.1.0
 
@@ -15,6 +16,7 @@ dependencies:
   clsx: 1.2.1
   preact: 10.11.0
   preact-feather: 4.2.1_preact@10.11.0
+  teaful: 0.11.1
 
 devDependencies:
   '@preact/preset-vite': 2.4.0_preact@10.11.0+vite@3.1.0
@@ -1191,6 +1193,16 @@ packages:
     transitivePeerDependencies:
       - ts-node
     dev: true
+
+  /teaful/0.11.1:
+    resolution: {integrity: sha512-U1O0u+GsHI0b/6vcEDjSPYwAWX57WAOXG31KCzAMrV4rWqcy+j71F4jsHb5q9FYqdkQjH8Pi1fWJ1oO/dLAKdw==}
+    peerDependencies:
+      react: '>= 16.8.0'
+      teaful-devtools: '>= 0.4.0'
+    peerDependenciesMeta:
+      teaful-devtools:
+        optional: true
+    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
