@@ -3,6 +3,7 @@ import { Plus, X } from "preact-feather"
 import { useState } from "preact/hooks"
 import {
   addCategory,
+  Category,
   deleteCategory,
   useFavStore,
 } from "../../store/favourites"
@@ -29,6 +30,11 @@ function Categories({ editMode, className }: IProps) {
     e.currentTarget.reset()
   }
 
+  const handleDelete = (category: Category) => {
+    if (confirm(`Are you sure, you want to delete "${category.name}"?`))
+      deleteCategory(category.id)
+  }
+
   return (
     <ul
       class={clsx(
@@ -48,9 +54,9 @@ function Categories({ editMode, className }: IProps) {
           <button onClick={() => setCurrentCategory(category.id)}>
             {category.name}
           </button>
-          {editMode && (
+          {editMode && currentCategory !== category.id && (
             <CircularButton
-              onClick={() => deleteCategory(category.id)}
+              onClick={() => handleDelete(category)}
               className="absolute -right-2 -top-2 !p-0.5 !bg-red-200/80"
               title="Delete"
             >

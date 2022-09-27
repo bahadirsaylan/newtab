@@ -51,5 +51,7 @@ export const deleteSite = (id: Site["id"]) =>
 export const addCategory = (name: Category["name"]) =>
   setStore.categories((curr) => [...curr, { name, id: Date.now().toString() }])
 
-export const deleteCategory = (id: Category["id"]) =>
+export const deleteCategory = (id: Category["id"]) => {
   setStore.categories((curr) => curr.filter((c) => c.id !== id))
+  setStore.sites((curr) => curr.filter((s) => s.categoryId !== id))
+}
