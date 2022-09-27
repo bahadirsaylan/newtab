@@ -1,33 +1,23 @@
 import clsx from "clsx"
 import { Edit2, Plus, X } from "preact-feather"
 import { useState } from "preact/hooks"
-import {
-  addCategory,
-  addSite,
-  deleteCategory,
-  deleteSite,
-  useStore,
-} from "../../store"
-import { parseForm } from "../../utils/form"
+import { deleteSite, useFavStore } from "../../store/favourites"
 import { CircularButton } from "../Button"
-import Input from "../Input"
 import SiteTile from "../SiteTile"
 import TileList from "../TileList"
 import AddSiteModal from "./AddSiteModal"
 import Categories from "./Categories"
 
-interface IProps {}
-
-function FavouriteSection({}: IProps) {
+function FavouriteSection() {
   const [showModal, setShowModal] = useState(false)
   const [editMode, setEditMode] = useState(false)
 
-  const sites = useStore.sites()[0]
-  const currentCategory = useStore.currentCategory()[0]
+  const sites = useFavStore.sites()[0]
+  const currentCategory = useFavStore.currentCategory()[0]
 
   return (
-    <div>
-      <TileList className="relative mx-auto shadow">
+    <>
+      <TileList className="mx-auto shadow">
         <Categories editMode={editMode} className="-mt-1" />
         {sites
           .filter((site) => site.categoryId === currentCategory)
@@ -62,7 +52,7 @@ function FavouriteSection({}: IProps) {
         </CircularButton>
       </TileList>
       <AddSiteModal show={showModal} onClose={() => setShowModal(false)} />
-    </div>
+    </>
   )
 }
 

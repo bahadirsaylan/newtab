@@ -1,7 +1,7 @@
 import createStore from "teaful"
-import { getItem, setItem } from "./utils/persist"
+import { getItem, setItem } from "../utils/persist"
 
-const STORE_KEY = "TAB_STORE"
+const STORE_KEY = "FAVOURITES_STORE"
 
 export type Site = {
   id: string
@@ -27,7 +27,7 @@ const initiaState = getItem<Store>(STORE_KEY) || {
   currentCategory: "0",
 }
 
-export const { useStore, setStore } = createStore<Store>(
+export const { useStore: useFavStore, setStore } = createStore<Store>(
   initiaState,
   ({ store }) => setItem(STORE_KEY, store)
 )

@@ -1,7 +1,11 @@
 import clsx from "clsx"
 import { Plus, X } from "preact-feather"
 import { useState } from "preact/hooks"
-import { addCategory, deleteCategory, useStore } from "../../store"
+import {
+  addCategory,
+  deleteCategory,
+  useFavStore,
+} from "../../store/favourites"
 import { parseForm } from "../../utils/form"
 import { CircularButton } from "../Button"
 import Input from "../Input"
@@ -14,8 +18,8 @@ interface IProps {
 function Categories({ editMode, className }: IProps) {
   const [showForm, setShowForm] = useState(false)
 
-  const categories = useStore.categories()[0]
-  const [currentCategory, setCurrentCategory] = useStore.currentCategory()
+  const categories = useFavStore.categories()[0]
+  const [currentCategory, setCurrentCategory] = useFavStore.currentCategory()
 
   const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()

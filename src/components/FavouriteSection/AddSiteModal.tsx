@@ -1,5 +1,5 @@
 import { Plus } from "preact-feather"
-import { addSite, useStore } from "../../store"
+import { addSite, useFavStore } from "../../store/favourites"
 import { parseForm } from "../../utils/form"
 import Button from "../Button"
 import Input from "../Input"
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 function AddSiteModal({ show, onClose }: IProps) {
-  const currentCategory = useStore.currentCategory()[0]
+  const currentCategory = useFavStore.currentCategory()[0]
 
   const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
