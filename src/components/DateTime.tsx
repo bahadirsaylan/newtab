@@ -25,7 +25,7 @@ function DateTime({ className }: IProps) {
     return () => clearInterval(timeInterval)
   }, [])
   return (
-    <div class={clsx("w-fit text-white", className)}>
+    <div class={clsx("text-center w-fit text-white", className)}>
       <h2 class="text-6xl font-light">{time}</h2>
       <hr class="border border-gray-200 mt-2" />
       <span class="text-lg font-medium">{new Date().toDateString()}</span>

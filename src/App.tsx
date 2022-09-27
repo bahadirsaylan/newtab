@@ -3,11 +3,6 @@ import DateTime from "./components/DateTime"
 import FavouriteSection from "./components/FavouriteSection"
 
 export default function App() {
-  const handleSearch = (searchQuery: string) => {
-    console.log(searchQuery)
-    // window.location = `https://www.google.com/search?q=${searchQuery}`
-  }
-
   return (
     <main
       class="h-screen bg-cover bg-center"
@@ -19,11 +14,7 @@ export default function App() {
     >
       <div class="p-8 space-y-6">
         <DateTime className="mx-auto" />
-        <SearchBar
-          class="mx-auto max-w-lg"
-          handleSubmit={handleSearch}
-          autoFocus
-        />
+        <SearchBar class="mx-auto max-w-lg" autoFocus />
 
         <FavouriteSection />
       </div>

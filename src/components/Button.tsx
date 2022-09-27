@@ -28,7 +28,7 @@ export function CircularButton({ className, ...props }: IProps) {
     <button
       {...props}
       class={clsx(
-        "rounded-full p-2",
+        "rounded-full p-2 overflow-hidden",
         "bg-white/50 dark:bg-gray-800/50",
         "text-gray-700 dark:text-gray-200",
         "disabled:opacity-60 hover:opacity-80",

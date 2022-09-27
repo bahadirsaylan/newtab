@@ -2,20 +2,32 @@ import { useState } from "preact/hooks"
 import clsx from "clsx"
 import { Search } from "preact-feather"
 import { CircularButton } from "./Button"
+import Dropdown from "./Dropdown"
+import { getFavicon } from "../utils/url"
+import { useSearchStore } from "../store/search"
 
 interface IProps extends preact.JSX.HTMLAttributes<HTMLInputElement> {
   className?: string
-  handleSubmit: (searchQuery: string) => void
 }
 
-function SearchBar({ className, handleSubmit, ...props }: IProps) {
+function SearchBar({ className, ...props }: IProps) {
   const [searchQuery, setSearchQuery] = useState("")
+
+  const providers = useSearchStore.providers()[0]
+  const [currentProviderId, setCurrentProviderId] =
+    useSearchStore.currentProviderId()
+
+  const currentProvider = providers[currentProviderId]
+
+  const handleSubmit = (searchQuery: string) => {
+    window.location.href = currentProvider.url + searchQuery
+  }
 
   return (
     <form
       class={clsx(
         "flex items-center max-w-lg mx-auto",
-        "px-2 py-1.5 w-full rounded-full border border-gray-400/60",
+        "px-1.5 py-1 w-full rounded-full border border-gray-400/60",
         "bg-white/70 backdrop-blur",
         "dark:bg-gray-800 dark:text-gary-300",
         "focus-within:ring-2 ring-gray-300/40 dark:ring-gray-500/40",
@@ -27,14 +39,43 @@ function SearchBar({ className, handleSubmit, ...props }: IProps) {
         searchQuery && handleSubmit(searchQuery)
       }}
     >
-      <CircularButton>
-        <img
-          class="w-8"
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-        />
-      </CircularButton>
+      <Dropdown
+        trigger={(handleClick) => (
+          <CircularButton
+            onClick={handleClick}
+            className="!p-1"
+            type="button"
+            title={currentProvider.name}
+          >
+            <img
+              class="w-10 rounded-full"
+              src={getFavicon(currentProvider.url)}
+              alt={currentProvider.name}
+            />
+          </CircularButton>
+        )}
+        className="-top-1.5 -left-1.5"
+      >
+        <ul class="flex gap-2 bg-gray-200 rounded-full p-1.5">
+          {Object.entries(providers).map(([id, provider]) => (
+            <CircularButton
+              key={id}
+              className="p-1"
+              onClick={() => setCurrentProviderId(id)}
+              title={provider.name}
+            >
+              <img
+                class="min-w-[32px] h-[32px] rounded-full"
+                src={getFavicon(provider.url)}
+                alt={provider.name}
+              />
+            </CircularButton>
+          ))}
+        </ul>
+      </Dropdown>
+
       <input
-        placeholder="Search..."
+        placeholder={`Search with ${currentProvider.name}...`}
         value={searchQuery}
         onInput={(e) => setSearchQuery(e.currentTarget.value)}
         {...props}
@@ -46,7 +87,12 @@ function SearchBar({ className, handleSubmit, ...props }: IProps) {
           props.class
         )}
       />
-      <CircularButton disabled={!searchQuery} type="submit">
+      <CircularButton
+        disabled={!searchQuery}
+        className="w-11"
+        type="submit"
+        title="Search"
+      >
         <Search />
       </CircularButton>
     </form>
