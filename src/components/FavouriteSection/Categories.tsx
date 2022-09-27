@@ -52,6 +52,7 @@ function Categories({ editMode, className }: IProps) {
             <CircularButton
               onClick={() => deleteCategory(category.id)}
               className="absolute -right-2 -top-2 !p-0.5 !bg-red-200/80"
+              title="Delete"
             >
               <X class="text-red-500" size={16} />
             </CircularButton>
@@ -73,6 +74,7 @@ function Categories({ editMode, className }: IProps) {
       <CircularButton
         className="!p-1 !rounded-lg"
         onClick={() => setShowForm((curr) => !curr)}
+        title={showForm ? "Cancel" : "Add Category"}
       >
         {showForm ? <X size={20} /> : <Plus size={20} />}
       </CircularButton>

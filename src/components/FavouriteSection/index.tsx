@@ -28,6 +28,7 @@ function FavouriteSection() {
                 <CircularButton
                   onClick={() => deleteSite(site.id)}
                   className="absolute -top-2 -right-2 !p-1.5 !bg-red-200/80"
+                  title={`Delete ${site.name}`}
                 >
                   <X class="text-red-500" size={16} />
                 </CircularButton>
@@ -41,12 +42,14 @@ function FavouriteSection() {
             "hover:bg-white/30 transition-colors"
           )}
           onClick={() => setShowModal(true)}
+          title="Add Site"
         >
           <Plus size={36} />
         </button>
         <CircularButton
           className="absolute right-0 top-0 m-2"
           onClick={() => setEditMode((curr) => !curr)}
+          title={editMode ? "Exit edit mode" : "Edit Mode"}
         >
           {editMode ? <X size={16} /> : <Edit2 size={16} />}
         </CircularButton>

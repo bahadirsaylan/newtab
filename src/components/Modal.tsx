@@ -27,7 +27,7 @@ function Modal({ heading, show, onClose, children, className }: IProps) {
       >
         <div class="flex gap-4 justify-between items-center mb-2">
           <h3 class="text-lg font-bold">{heading}</h3>
-          <CircularButton className="p-1.5" onClick={onClose}>
+          <CircularButton className="p-1.5" onClick={onClose} title="Close">
             <X />
           </CircularButton>
         </div>
