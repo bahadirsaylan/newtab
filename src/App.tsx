@@ -1,7 +1,6 @@
 import SearchBar from "./components/SearchBar"
-import TileList from "./components/TileList"
-import Tile from "./components/Tile"
 import DateTime from "./components/DateTime"
+import FavouriteSection from "./components/FavouriteSection"
 
 export default function App() {
   const handleSearch = (searchQuery: string) => {
@@ -13,7 +12,7 @@ export default function App() {
     <main
       class="h-screen bg-cover bg-center"
       style={{
-        backgroundImage: `url(https://source.unsplash.com/random/${
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(https://source.unsplash.com/random/${
           window.screen.width + "x" + window.screen.height
         }?wallpaper,nature,abstract)`,
       }}
@@ -26,13 +25,7 @@ export default function App() {
           autoFocus
         />
 
-        <TileList className="mx-auto">
-          <a href="http://github.com">
-            <Tile>
-              <img src="https://github.com/favicon.ico" />
-            </Tile>
-          </a>
-        </TileList>
+        <FavouriteSection />
       </div>
     </main>
   )
