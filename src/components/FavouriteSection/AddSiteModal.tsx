@@ -16,7 +16,6 @@ function AddSiteModal({ show, onClose }: IProps) {
   const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     const site = parseForm<{ name: string; url: string }>(e.currentTarget)
-    console.log(site)
     addSite(site, currentCategory)
     onClose()
     e.currentTarget.reset()

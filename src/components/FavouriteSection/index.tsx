@@ -44,7 +44,7 @@ function FavouriteSection() {
           onClick={() => setShowModal(true)}
           title="Add Site"
         >
-          <Plus size={36} />
+          <Plus size={42} />
         </button>
         <CircularButton
           className="absolute right-0 top-0 m-2"
