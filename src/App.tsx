@@ -14,8 +14,7 @@ export default function App() {
     >
       <div class="p-8 space-y-6">
         <DateTime className="mx-auto" />
-        <SearchBar class="mx-auto max-w-lg" autoFocus />
-
+        <SearchBar className="mx-auto max-w-lg" autoFocus />
         <FavouriteSection />
       </div>
     </main>
