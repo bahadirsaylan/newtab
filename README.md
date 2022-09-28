@@ -1,8 +1,8 @@
-# [New Tab](https://newtab.pages.dev/) 📌
+# [New Tab](https://mintab.pages.dev/) 📌
 
 A minimal and powerful new tab / home page for your browser.
 
-**Set this as homepage of you browser:** [https://newtab.pages.dev/](https://newtab.pages.dev/)
+**Set this as homepage of you browser:** [https://mintab.pages.dev/](https://mintab.pages.dev/)
 
 **Screenshot (light):**
 ![Light theme](https://i.ibb.co/Jr9dNn1/image.png)
