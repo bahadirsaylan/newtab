@@ -11,7 +11,7 @@ function Button({ className, ...props }: IProps) {
       class={clsx(
         "flex item-center justify-center",
         "px-4 py-2 rounded-lg",
-        "bg-gray-800",
+        "bg-gray-700",
         "font-bold text-white",
         "disabled:opacity-60 hover:opacity-95",
         "shadow hover:shadow-lg transition-all",
@@ -29,7 +29,7 @@ export function CircularButton({ className, ...props }: IProps) {
       {...props}
       class={clsx(
         "rounded-full p-2 overflow-hidden",
-        "bg-white/50 dark:bg-gray-800/50",
+        "bg-white/50 dark:bg-gray-600/50",
         "text-gray-700 dark:text-gray-200",
         "disabled:opacity-60 hover:opacity-80",
         "shadow hover:shadow-lg transition-all",

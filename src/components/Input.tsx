@@ -25,7 +25,7 @@ function Input({ className, label, ...props }: IProps) {
         id={`input-${id}`}
         class={clsx(
           "w-full px-3 py-2 rounded-lg",
-          "bg-gray-100/60 dark:bg-gray-600/60",
+          "bg-gray-100/60 dark:bg-gray-700/60 dark:text-gray-200",
           "focus:outline-none focus-visible:ring-2 ring-gray-500/40"
         )}
         {...props}

@@ -10,7 +10,7 @@ function TileList({ children, className }: IProps) {
     <ul
       class={clsx(
         "flex flex-wrap items-start gap-4",
-        "bg-gray-200/40 backdrop-blur-lg",
+        "bg-gray-200/40 dark:bg-gray-700/40 backdrop-blur-lg",
         "p-4 rounded-2xl max-w-2xl",
         className
       )}

@@ -19,7 +19,7 @@ function SiteTile({ className, name, url }: IProps) {
       >
         <img class="w-10" src={getFavicon(url)} alt={url} />
       </div>
-      <p class="text-xs text-center mt-1">{name}</p>
+      <p class="text-xs text-center mt-1 dark:text-gray-200">{name}</p>
     </a>
   )
 }

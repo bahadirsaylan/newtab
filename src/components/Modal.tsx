@@ -15,15 +15,20 @@ function Modal({ heading, show, onClose, children, className }: IProps) {
     <div
       onClick={onClose}
       class={clsx(
-        "!m-0 fixed inset-0 z-10",
+        "!m-0 fixed inset-0 z-50",
         "items-center justify-center",
-        "bg-gray-800/40",
+        "bg-black/50",
         show ? "flex" : "hidden"
       )}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        class={clsx("max-w-xl rounded-xl p-4 bg-gray-300", className)}
+        class={clsx(
+          "max-w-xl rounded-xl p-4 shadow-xl",
+          "bg-gray-300 dark:bg-gray-800",
+          "dark:text-gray-200",
+          className
+        )}
       >
         <div class="flex gap-4 justify-between items-center mb-2">
           <h3 class="text-lg font-bold">{heading}</h3>

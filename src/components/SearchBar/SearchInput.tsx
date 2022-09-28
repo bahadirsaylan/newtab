@@ -40,7 +40,7 @@ function SearchInput({
       )}
       className="top-12 w-full"
     >
-      <ul class="py-2 bg-gray-100/95 rounded-b-lg shadow-xl backdrop-blur empty:hidden">
+      <ul class="py-2 bg-gray-100 dark:bg-gray-700 rounded-b-lg shadow-xl backdrop-blur empty:hidden">
         {sites
           .filter((s) =>
             s.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -53,7 +53,7 @@ function SearchInput({
               >
                 <img class="w-8 h-8" src={getFavicon(s.url)} />
                 <span class="font-bold">{s.name}</span>
-                <p class="text-gray-500">{s.url}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">{s.url}</p>
               </a>
             </li>
           ))}

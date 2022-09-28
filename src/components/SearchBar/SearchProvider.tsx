@@ -35,7 +35,7 @@ function SearchProvider({
       )}
       className="-top-1.5 -left-1.5 z-10"
     >
-      <ul class="flex gap-2 bg-gray-200 rounded-full p-1.5">
+      <ul class="flex gap-2 bg-gray-200 dark:bg-gray-700 rounded-full p-1.5">
         {Object.entries(providers).map(([id, provider]) => (
           <CircularButton
             key={id}

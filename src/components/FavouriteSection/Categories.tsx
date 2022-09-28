@@ -38,7 +38,8 @@ function Categories({ editMode, className }: IProps) {
   return (
     <ul
       class={clsx(
-        "w-full flex flex-wrap items-center gap-4 font-bold text-sm",
+        "w-full flex flex-wrap items-center gap-4",
+        "font-bold text-sm",
         className
       )}
     >
@@ -47,8 +48,8 @@ function Categories({ editMode, className }: IProps) {
           class={clsx(
             "p-1 relative",
             currentCategory === category.id
-              ? "border-b-2 border-gray-200 text-gray-900"
-              : "text-gray-700"
+              ? "border-b-2 border-gray-200 text-gray-900 dark:text-gray-200"
+              : "text-gray-700 dark:text-gray-400"
           )}
         >
           <button onClick={() => setCurrentCategory(category.id)}>
@@ -71,7 +72,7 @@ function Categories({ editMode, className }: IProps) {
           <Input
             name="category"
             autoFocus={showForm}
-            className="w-40 "
+            className="w-40 dark:text-gray-200"
             placeholder="Category Name"
           />
         </form>
