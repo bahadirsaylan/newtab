@@ -23,7 +23,7 @@ function DateTime({ className }: IProps) {
     const minutes = date.getMinutes()
 
     if (hours > 12) setTime({ hours: hours - 12, minutes, meridiem: "PM" })
-    else setTime({ hours, minutes, meridiem: "AM" })
+    else setTime({ hours, minutes, meridiem: hours >= 12 ? "PM" : "AM" })
   }
 
   useEffect(() => {
