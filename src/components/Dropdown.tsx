@@ -3,7 +3,7 @@ import { useEffect, useState } from "preact/hooks"
 import useClickOutside from "../hooks/useClickOutside"
 
 interface IDropDownProps {
-  trigger: (handleClick: () => void) => preact.ComponentChild
+  trigger: (handleClick: (bool?: boolean) => void) => preact.ComponentChild
   children: preact.ComponentChild
   className?: string
   onOpen?: () => void
@@ -26,12 +26,11 @@ function Dropdown({
 
   return (
     <div ref={dropdownRef} class="relative">
-      {trigger(() => setShow((prev) => !prev))}
+      {trigger((bool?: boolean) =>
+        setShow((prev) => (bool === undefined ? !prev : bool))
+      )}
       {show && (
-        <div
-          className={clsx("absolute top-0 min-w-44", className)}
-          onClick={() => setShow(false)}
-        >
+        <div class={clsx("absolute", className)} onClick={() => setShow(false)}>
           {children}
         </div>
       )}
