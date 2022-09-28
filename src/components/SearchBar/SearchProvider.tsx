@@ -1,4 +1,7 @@
-import { SearchProvider as SearchProviderType, Store } from "../../store/search"
+import {
+  SearchProvider as SearchProviderType,
+  Store,
+} from "../../store/settings"
 import { getFavicon } from "../../utils/url"
 import { CircularButton } from "../Button"
 import Dropdown from "../Dropdown"

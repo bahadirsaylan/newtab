@@ -11,6 +11,7 @@ export type SearchProvider = {
 export interface Store {
   providers: { [id: string]: SearchProvider }
   currentProviderId: string
+  darkMode: boolean
 }
 
 const initiaState = getItem<Store>(STORE_KEY) || {
@@ -22,9 +23,10 @@ const initiaState = getItem<Store>(STORE_KEY) || {
     "4": { name: "Ecosia", url: "https://www.ecosia.org/search?q=" },
   },
   currentProviderId: "0",
+  darkMode: window.matchMedia("(prefers-color-scheme: dark)").matches,
 }
 
-export const { useStore: useSearchStore } = createStore<Store>(
+export const { useStore: useSettingStore } = createStore<Store>(
   initiaState,
   ({ store }) => setItem(STORE_KEY, store)
 )

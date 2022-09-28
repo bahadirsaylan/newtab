@@ -2,7 +2,7 @@ import { useState } from "preact/hooks"
 import clsx from "clsx"
 import { Search } from "preact-feather"
 import { CircularButton } from "../Button"
-import { useSearchStore } from "../../store/search"
+import { useSettingStore } from "../../store/settings"
 import SearchInput from "./SearchInput"
 import SearchProvider from "./SearchProvider"
 
@@ -13,9 +13,9 @@ interface IProps extends preact.JSX.HTMLAttributes<HTMLInputElement> {
 function SearchBar({ className, ...props }: IProps) {
   const [searchQuery, setSearchQuery] = useState("")
 
-  const providers = useSearchStore.providers()[0]
+  const providers = useSettingStore.providers()[0]
   const [currentProviderId, setCurrentProviderId] =
-    useSearchStore.currentProviderId()
+    useSettingStore.currentProviderId()
 
   const currentProvider = providers[currentProviderId]
 
