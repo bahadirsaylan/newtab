@@ -4,6 +4,7 @@ import FavouriteSection from "./components/FavouriteSection"
 import clsx from "clsx"
 import { useSettingStore } from "./store/settings"
 import ThemeToggle from "./components/ThemeToggle"
+import Footer from "./components/Footer"
 
 export default function App() {
   const darkMode = useSettingStore.darkMode()[0]
@@ -23,6 +24,7 @@ export default function App() {
         <SearchBar className="mx-auto max-w-lg" autoFocus />
         <FavouriteSection />
       </div>
+      <Footer />
     </main>
   )
 }
