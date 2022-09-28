@@ -24,7 +24,7 @@ function SearchProvider({
           onClick={() => handleClick()}
           className="!p-1"
           type="button"
-          title={currentProvider.name}
+          title="Switch Search Provider"
         >
           <img
             class="w-10 rounded-full"
