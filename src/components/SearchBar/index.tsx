@@ -5,6 +5,7 @@ import { CircularButton } from "../Button"
 import { useSettingStore } from "../../store/settings"
 import SearchInput from "./SearchInput"
 import SearchProvider from "./SearchProvider"
+import { addRecentSearch } from "../../store/searches"
 
 interface IProps extends preact.JSX.HTMLAttributes<HTMLInputElement> {
   className?: string
@@ -20,6 +21,7 @@ function SearchBar({ className, ...props }: IProps) {
   const currentProvider = providers[currentProviderId]
 
   const handleSubmit = (searchQuery: string) => {
+    addRecentSearch(searchQuery)
     window.location.href = currentProvider.url + searchQuery
   }
 
@@ -46,6 +48,7 @@ function SearchBar({ className, ...props }: IProps) {
       />
       <div class="w-full">
         <SearchInput
+          provider={currentProvider}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           placeholder={`Search with ${currentProvider.name}...`}
