@@ -19,6 +19,7 @@ A minimal and powerful new tab / home page for your browser.
   - > Currently supported: Google, DuckDuckGo, Yahoo, Bing and Ecosia.
 - Powerful search across all your sites from one place.
 - Stores all data privately in your browser's inbuilt local storage.
+- Re-arrange and re-categorize your sites to your liking.
 - Off course, dark mode.
 
 ---
