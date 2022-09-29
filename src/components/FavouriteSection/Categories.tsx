@@ -14,9 +14,10 @@ import Input from "../Input"
 interface IProps {
   editMode: boolean
   className?: string
+  onDrop?: (catId: Category["id"]) => void
 }
 
-function Categories({ editMode, className }: IProps) {
+function Categories({ editMode, className, onDrop }: IProps) {
   const [showForm, setShowForm] = useState(false)
 
   const categories = useFavStore.categories()[0]
@@ -51,6 +52,8 @@ function Categories({ editMode, className }: IProps) {
               ? "border-b-2 border-gray-200 text-gray-900 dark:text-gray-200"
               : "text-gray-700 dark:text-gray-400"
           )}
+          onDrop={() => onDrop?.(category.id)}
+          onDragOver={(e) => e.preventDefault()}
         >
           <button onClick={() => setCurrentCategory(category.id)}>
             {category.name}

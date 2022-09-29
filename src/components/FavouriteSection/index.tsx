@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import { Edit2, Plus, X } from "preact-feather"
 import { useState } from "preact/hooks"
-import { deleteSite, useFavStore } from "../../store/favourites"
+import { Category, deleteSite, useFavStore } from "../../store/favourites"
 import { CircularButton } from "../Button"
 import SiteTile from "../SiteTile"
 import TileList from "../TileList"
@@ -16,7 +16,7 @@ function FavouriteSection() {
   const [sites, setSites] = useFavStore.sites()
   const currentCategory = useFavStore.currentCategory()[0]
 
-  const handleDrop = (idx: number) => {
+  const handleSiteDrop = (idx: number) => {
     setSites((curr) => {
       const site = curr[dragSite]
       curr.splice(dragSite, 1)
@@ -25,19 +25,29 @@ function FavouriteSection() {
     })
   }
 
+  const handleCategoryDrop = (categoryId: Category["id"]) => {
+    setSites((curr) => {
+      curr[dragSite].categoryId = categoryId
+      return curr
+    })
+  }
+
   return (
     <>
       <TileList className="mx-auto shadow">
-        <Categories editMode={editMode} className="-mt-1" />
-        {sites
-          .filter((site) => site.categoryId === currentCategory)
-          .map((site, idx) => (
+        <Categories
+          onDrop={handleCategoryDrop}
+          editMode={editMode}
+          className="-mt-1"
+        />
+        {sites.map((site, idx) =>
+          site.categoryId !== currentCategory ? null : (
             <li
               key={site.id}
               class="relative"
               draggable
               onDragStart={() => setDragSite(idx)}
-              onDrop={() => handleDrop(idx)}
+              onDrop={() => handleSiteDrop(idx)}
               onDragOver={(e) => e.preventDefault()}
             >
               <SiteTile {...site} />
@@ -51,7 +61,8 @@ function FavouriteSection() {
                 </CircularButton>
               )}
             </li>
-          ))}
+          )
+        )}
         <button
           class={clsx(
             "p-4 rounded-xl focus:ouline-none",
