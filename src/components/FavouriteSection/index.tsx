@@ -11,9 +11,19 @@ import Categories from "./Categories"
 function FavouriteSection() {
   const [showModal, setShowModal] = useState(false)
   const [editMode, setEditMode] = useState(false)
+  const [dragSite, setDragSite] = useState(-1)
 
-  const sites = useFavStore.sites()[0]
+  const [sites, setSites] = useFavStore.sites()
   const currentCategory = useFavStore.currentCategory()[0]
+
+  const handleDrop = (idx: number) => {
+    setSites((curr) => {
+      const site = curr[dragSite]
+      curr.splice(dragSite, 1)
+      curr.splice(idx, 0, site)
+      return curr
+    })
+  }
 
   return (
     <>
@@ -21,8 +31,15 @@ function FavouriteSection() {
         <Categories editMode={editMode} className="-mt-1" />
         {sites
           .filter((site) => site.categoryId === currentCategory)
-          .map((site) => (
-            <div class="relative">
+          .map((site, idx) => (
+            <li
+              key={site.id}
+              class="relative"
+              draggable
+              onDragStart={() => setDragSite(idx)}
+              onDrop={() => handleDrop(idx)}
+              onDragOver={(e) => e.preventDefault()}
+            >
               <SiteTile {...site} />
               {editMode && (
                 <CircularButton
@@ -33,7 +50,7 @@ function FavouriteSection() {
                   <X class="text-red-500" size={16} />
                 </CircularButton>
               )}
-            </div>
+            </li>
           ))}
         <button
           class={clsx(
